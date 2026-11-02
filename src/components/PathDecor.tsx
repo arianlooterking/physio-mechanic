@@ -18,6 +18,44 @@ const S = {
 } as const;
 
 const SHAPES: Record<string, ReactNode> = {
+  bone: (
+    <svg viewBox="0 0 48 48" {...S}>
+      <path d="M17 21 27 31M21 17l10 10M16.4 21.2a4.6 4.6 0 1 1-5.6-5.6 4.6 4.6 0 1 1 5.6-5.6l4.4 4.4-4.4 6.8zM31.6 26.8a4.6 4.6 0 1 1 5.6 5.6 4.6 4.6 0 1 1-5.6 5.6l-4.4-4.4 4.4-6.8z" />
+    </svg>
+  ),
+  lever: (
+    <svg viewBox="0 0 48 48" {...S}>
+      <path d="M4 32 44 20M20 41h8l-4-12z" />
+      <path d="M9 30.5V13M5 17l4-4 4 4" strokeWidth={2.4} />
+      <rect x="35" y="11" width="8" height="8" rx="2" fill="currentColor" />
+    </svg>
+  ),
+  ss: (
+    <svg viewBox="0 0 48 48" {...S}>
+      <path d="M6 42V6M6 42h36" strokeWidth={2} opacity={0.6} />
+      <path d="M8 40 22 16c4-6 10-6 14-2l4 6" />
+      <path d="M40 20l2 6" strokeWidth={2} strokeDasharray="2 3" />
+    </svg>
+  ),
+  sarcomere: (
+    <svg viewBox="0 0 48 48" {...S} strokeWidth={2.4}>
+      <path d="M6 10v28M42 10v28M24 14v20" />
+      <path d="M6 18h14M6 30h14M28 18h14M28 30h14M18 24h12" opacity={0.75} />
+    </svg>
+  ),
+  joint: (
+    <svg viewBox="0 0 48 48" {...S}>
+      <path d="M17 4v14a7 7 0 0 0 14 0V4M17 44V33a7 7 0 0 1 14 0v11" />
+      <path d="M20 25.5h8" strokeWidth={2} opacity={0.6} />
+    </svg>
+  ),
+  moment: (
+    <svg viewBox="0 0 48 48" {...S}>
+      <path d="M38 16a16 16 0 1 1-24-4" />
+      <path d="M8 8l6 4-2 7" />
+      <circle cx="24" cy="24" r="3" fill="currentColor" />
+    </svg>
+  ),
   parabola: (
     <svg viewBox="0 0 48 48" {...S}>
       <path d="M6 40V8M6 40h36" strokeWidth={2} opacity={0.6} />
@@ -162,6 +200,30 @@ type Deco = { tex: string } | { txt: string } | { shape: keyof typeof SHAPES };
 type Art = Subject['icon'];
 
 const SETS: Record<Art, Deco[]> = {
+  lever: [
+    { tex: 'M=F\\cdot d' },
+    { shape: 'lever' },
+    { tex: '\\sigma=\\tfrac{F}{A}' },
+    { shape: 'sparkle' },
+    { shape: 'moment' },
+    { tex: '\\Sigma M=0' },
+    { shape: 'ss' },
+    { shape: 'ring' },
+    { tex: '\\varepsilon' },
+    { shape: 'vector' },
+  ],
+  bone: [
+    { shape: 'bone' },
+    { tex: 'E' },
+    { shape: 'sarcomere' },
+    { shape: 'sparkle' },
+    { tex: '\\sigma' },
+    { shape: 'joint' },
+    { shape: 'ring' },
+    { tex: 'F=k\\,\\Delta\\ell' },
+    { shape: 'ss' },
+    { shape: 'bone' },
+  ],
   calc: [
     { tex: 'f(x)' },
     { shape: 'parabola' },
@@ -358,6 +420,24 @@ export function UnitArt({ subject }: { subject: SubjectId }) {
             <path d="M32 24q30 120 60 0" />
             <path d="M24 112c22-4 26-44 46-44s26-40 52-46" opacity={0.7} strokeDasharray="2 9" />
             <circle cx="62" cy="96" r="5" fill="currentColor" />
+          </>
+        )}
+        {art === 'lever' && (
+          <>
+            <path d="M12 98 128 62" />
+            <path d="M58 118h24l-12-36z" fill="currentColor" fillOpacity={0.15} />
+            <path d="M24 94V40M14 52l10-12 10 12" strokeWidth={3.4} />
+            <rect className="ua-weight" x="104" y="34" width="22" height="22" rx="5" fill="currentColor" />
+            <path d="M115 58v6" strokeWidth={3} />
+            <path d="M48 72a26 26 0 0 1 40-6" strokeWidth={3} opacity={0.6} strokeDasharray="3 8" />
+          </>
+        )}
+        {art === 'bone' && (
+          <>
+            <path d="M50 58 82 90M58 50l32 32" />
+            <path d="M48.5 59.5a12 12 0 1 1-15-15 12 12 0 1 1 15-15l11 11-11 19zM91.5 80.5a12 12 0 1 1 15 15 12 12 0 1 1-15 15l-11-11 11-19z" fill="currentColor" fillOpacity={0.12} />
+            <path d="M20 122c14-10 30-10 44 0s30 10 44 0" strokeWidth={3} opacity={0.55} />
+            <circle className="ua-bubble" cx="112" cy="30" r="5" fill="currentColor" />
           </>
         )}
         {art === 'atom' && (

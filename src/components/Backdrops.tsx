@@ -30,17 +30,17 @@ export function AppBackdrop({ subject }: { subject?: SubjectId }) {
 }
 
 const SYMBOLS: [string, number, number, number, number][] = [
-  ['π', 6, 14, 30, -2],
-  ['∑', 90, 10, 34, -6],
-  ['√', 14, 62, 28, -4],
-  ['∞', 84, 48, 30, -9],
-  ['Δ', 4, 88, 26, -1],
-  ['∫', 94, 80, 36, -7],
-  ['≈', 48, 6, 24, -3],
-  ['θ', 70, 92, 26, -5],
-  ['λ', 30, 34, 22, -8],
-  ['α', 62, 26, 22, -10],
-];
+  ['σ', 6, 14, 30, -2],
+  ['ε', 90, 10, 32, -6],
+  ['τ', 14, 62, 28, -4],
+  ['M', 84, 48, 28, -9],
+  ['Δℓ', 4, 88, 24, -1],
+  ['F', 94, 80, 32, -7],
+  ['θ', 48, 6, 24, -3],
+  ['ω', 70, 92, 26, -5],
+  ['E', 30, 34, 22, -8],
+  ['N', 62, 26, 20, -10],
+]
 
 /**
  * Behind a lesson, practice, test or card session: a wash in the subject colour, the subject's own paper
@@ -70,7 +70,7 @@ export function LessonBackdrop({ subject, framed }: { subject?: SubjectId; frame
           <path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
-      <div className="lb-piece lb-badge idea">💡</div>
+      <div className="lb-piece lb-badge idea">🦴</div>
       <span className="lb-star s1">✦</span>
       <span className="lb-star s2">✦</span>
       <span className="lb-star s3">✦</span>
@@ -125,44 +125,61 @@ function LanguagePieces({ subject }: { subject?: SubjectId }) {
   );
 }
 
+/** Tissues: a bone, a sarcomere and the numbers that describe how tissue carries load. */
 function BioPieces() {
-  const words = ['A = T', 'G ≡ C', 'DNA'];
   return (
     <>
-      {words.map((w, i) => (
-        <div key={w} className={`lb-piece lb-chip c${i + 1}`} dir="ltr">
-          {w}
-        </div>
-      ))}
+      <div className="lb-piece lb-atom lb-bone">
+        <svg viewBox="0 0 80 80">
+          <path d="M28 36 44 52M36 28l16 16" />
+          <path d="M27.4 36.6a7 7 0 1 1-8.6-8.6 7 7 0 1 1 8.6-8.6l6.8 6.8-6.8 10.4zM52.6 43.4a7 7 0 1 1 8.6 8.6 7 7 0 1 1-8.6 8.6l-6.8-6.8 6.8-10.4z" className="nuc" />
+        </svg>
+      </div>
+      <div className="lb-piece lb-pendulum lb-sarc">
+        <svg viewBox="0 0 60 90">
+          <path d="M8 10v70M52 10v70" className="bar" />
+          <g className="slide">
+            <path d="M8 30h18M8 60h18M34 30h18M34 60h18" className="rod" />
+          </g>
+          <path d="M22 45h16" className="myo" />
+        </svg>
+      </div>
+      <div className="lb-piece lb-chip c1">
+        <M tex="\sigma=E\,\varepsilon" />
+      </div>
+      <div className="lb-piece lb-chip c2" dir="ltr">
+        Wolff
+      </div>
+      <div className="lb-piece lb-chip c3">
+        <M tex="F=k\,\Delta\ell" />
+      </div>
     </>
   );
 }
 
+/** Mechanics: a forearm lever on its fulcrum, a stress–strain curve and a force arrow. */
 function PhysicsPieces() {
   return (
     <>
-      <div className="lb-piece lb-atom">
-        <svg viewBox="0 0 80 80">
-          <ellipse cx="40" cy="40" rx="34" ry="12" />
-          <ellipse cx="40" cy="40" rx="34" ry="12" transform="rotate(60 40 40)" />
-          <ellipse cx="40" cy="40" rx="34" ry="12" transform="rotate(-60 40 40)" />
-          <circle cx="40" cy="40" r="5" className="nuc" />
-          <circle r="3.5" className="e">
-            <animateMotion dur="3s" repeatCount="indefinite" path="M74 40a34 12 0 1 1-68 0a34 12 0 1 1 68 0" />
-          </circle>
+      <div className="lb-piece lb-plot">
+        <svg viewBox="0 0 120 80">
+          <path d="M10 72H112M12 76V6" className="ax" />
+          <path className="curve" d="M14 70 52 22" />
+          <path className="curve two" d="M14 70 46 28c6-8 16-12 26-8l20 10 12 4" />
         </svg>
       </div>
-      <div className="lb-piece lb-pendulum">
-        <svg viewBox="0 0 60 90">
-          <path d="M10 4h40" className="bar" />
-          <g className="swing">
-            <path d="M30 4v58" className="rod" />
-            <circle cx="30" cy="68" r="9" className="bob" />
+      <div className="lb-piece lb-pendulum lb-lever">
+        <svg viewBox="0 0 90 60">
+          <path d="M38 54h14l-7-16z" className="bob" />
+          <g className="tilt">
+            <path d="M6 38h78" className="rod" />
+            <rect x="70" y="24" width="12" height="12" rx="3" className="bob" />
+            <path d="M18 38V14M12 20l6-6 6 6" className="bar" />
           </g>
         </svg>
       </div>
       <div className="lb-piece lb-chip c1">
-        <M tex="v=\dfrac{\Delta x}{\Delta t}" />
+        <M tex="\Sigma M=0" />
       </div>
       <div className="lb-piece lb-arrow">
         <svg viewBox="0 0 120 30">
@@ -170,7 +187,7 @@ function PhysicsPieces() {
           <path d="M96 6l12 9-12 9" />
         </svg>
         <span>
-          <M tex="\vec v" />
+          <M tex="\vec F" />
         </span>
       </div>
     </>

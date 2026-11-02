@@ -13,8 +13,8 @@ function subject(id: SubjectId, title: string, short: string, grade: Grade, fiel
 
 /** The book's parts, in reading order. Parts without lessons yet are listed in the library as "coming soon". */
 export const SUBJECTS: Subject[] = [
-  subject('bm1', 'مقدمه و مفاهیم پایه', 'مقدمه', 12, 'physics', 'bm1', 'phys', 'atom', BM1_LESSONS),
-  subject('bm2', 'بیومکانیک بافت‌ها', 'بافت‌ها', 12, 'biology', 'bm2', 'bio', 'leaf', BM2_LESSONS),
+  subject('bm1', 'مقدمه و مفاهیم پایه', 'مقدمه', 12, 'physics', 'bm1', 'phys', 'lever', BM1_LESSONS),
+  subject('bm2', 'بیومکانیک بافت‌ها', 'بافت‌ها', 12, 'biology', 'bm2', 'bio', 'bone', BM2_LESSONS),
 ];
 
 export const LESSONS: Lesson[] = SUBJECTS.flatMap((s) => s.lessons);

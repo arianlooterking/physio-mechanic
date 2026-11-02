@@ -1,28 +1,36 @@
-/** «بیو», the animated lightbulb mascot (see FahmiArt), plus the small brand mark. */
-export { FahmiArt as Mascot, type Mood } from './FahmiArt';
+import { useId } from 'react';
 
-/** Small brand mark (used as the app icon too). */
+/** «بیو», the animated bone mascot (see BioArt), plus the small brand mark. */
+export { BioArt as Mascot, type Mood } from './BioArt';
+
+/** Small brand mark (used as the app icon too): a bone turning under a moment arrow. */
 export function BrandMark({ size = 40 }: { size?: number }) {
+  // Unique gradient ids: a copy of the mark inside a hidden sidebar would otherwise blank every other copy.
+  const u = useId().replace(/:/g, '');
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" className="brand-mark" aria-hidden="true">
       <defs>
-        <linearGradient id="bm-bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#7a5cff" />
-          <stop offset="1" stopColor="#4123cf" />
+        <linearGradient id={`bm-bg${u}`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#1bb3a8" />
+          <stop offset="1" stopColor="#0a645f" />
         </linearGradient>
-        <linearGradient id="bm-b" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#ffe066" />
-          <stop offset="1" stopColor="#ffab1a" />
+        <linearGradient id={`bm-b${u}`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#fffdf7" />
+          <stop offset="1" stopColor="#efe0c2" />
         </linearGradient>
       </defs>
-      <rect width="64" height="64" rx="16" fill="url(#bm-bg)" />
-      <circle cx="32" cy="28" r="20" fill="#ffd84d" opacity="0.18" />
-      <path d="M22.5 37.5c-4.6-4.3-5.8-12.6-1.2-18.5 4.8-6.3 17.6-6.3 22.4 0 4.6 5.9 3.4 14.2-1.2 18.5-2 2-2.8 3.8-2.8 6H25.3c0-2.2-.8-4-2.8-6Z" fill="url(#bm-b)" />
-      <rect x="25" y="44" width="14" height="8" rx="2.6" fill="#fff" />
-      <path d="M26 47.5h12" stroke="#7a5cff" strokeWidth="1.6" strokeLinecap="round" />
-      <ellipse cx="28" cy="27" rx="2.4" ry="3" fill="#2a1f5c" />
-      <ellipse cx="36" cy="27" rx="2.4" ry="3" fill="#2a1f5c" />
-      <path d="M28.5 33q3.5 3.2 7 0" stroke="#2a1f5c" strokeWidth="2" strokeLinecap="round" fill="none" />
+      <rect width="64" height="64" rx="16" fill={`url(#bm-bg${u})`} />
+      <path d="M54.6 28A23 23 0 0 1 38 54.2" fill="none" stroke="#ff8a6a" strokeWidth="3.6" strokeLinecap="round" />
+      <path d="M31 55.6l7-6.2 1.2 9.6z" fill="#ff8a6a" stroke="#ff8a6a" strokeWidth="1.6" strokeLinejoin="round" />
+      <g transform="rotate(-38 28 31)" fill={`url(#bm-b${u})`}>
+        <rect x="13" y="27" width="30" height="8.5" rx="4.2" />
+        <circle cx="13" cy="26.6" r="5.4" />
+        <circle cx="13" cy="35.6" r="5.4" />
+        <circle cx="43" cy="26.6" r="5.4" />
+        <circle cx="43" cy="35.6" r="5.4" />
+        <circle cx="25.4" cy="31.2" r="1.5" fill="#10292f" />
+        <circle cx="30.6" cy="31.2" r="1.5" fill="#10292f" />
+      </g>
     </svg>
   );
 }

@@ -161,7 +161,7 @@ async function schedule(r: Reminder) {
     if (at.getTime() <= now.getTime() + 60_000 || (d === 0 && doneToday)) continue;
     const streak = liveStreak(s);
     const body = d <= 1 && streak >= 2 ? `زنجیرهٔ ${fmt(streak)} روزه‌ات منتظر است؛ یک درس کوتاه کافی است.` : LINES[(at.getDate() + d) % LINES.length];
-    list.push({ id: REMINDER_IDS[d], title: 'بیومانا', body, schedule: { at, allowWhileIdle: true }, smallIcon: 'ic_stat_biomana', iconColor: '#5b3df5' });
+    list.push({ id: REMINDER_IDS[d], title: 'بیومانا', body, schedule: { at, allowWhileIdle: true }, smallIcon: 'ic_stat_biomana', iconColor: '#0f8a83' });
   }
   if (list.length) await LocalNotifications.schedule({ notifications: list }).catch(() => {});
 }
@@ -197,7 +197,7 @@ function paintStatusBar() {
   const theme = getState().profile.theme;
   const dark = theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
   void StatusBar.setStyle({ style: dark ? Style.Dark : Style.Light }).catch(() => {});
-  if (appPlatform === 'android') void StatusBar.setBackgroundColor({ color: dark ? '#100d24' : '#f5f3ff' }).catch(() => {});
+  if (appPlatform === 'android') void StatusBar.setBackgroundColor({ color: dark ? '#0b1719' : '#f6f3ec' }).catch(() => {});
 }
 
 const atHome = () => ['', '#', '#/'].includes(location.hash);

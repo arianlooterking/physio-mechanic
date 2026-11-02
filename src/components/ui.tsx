@@ -48,7 +48,7 @@ export function Ring({ value, size = 44, stroke = 5, color = 'var(--primary)', t
   );
 }
 
-const SUBJECT_ICON: Record<Subject['icon'], IconName> = { calc: 'calc', atom: 'atomic', flask: 'flask', geo: 'geo', dice: 'dice', nodes: 'nodes', abc: 'abc', ayn: 'ayn', leaf: 'leaf' };
+const SUBJECT_ICON: Record<Subject['icon'], IconName> = { calc: 'calc', atom: 'atomic', flask: 'flask', geo: 'geo', dice: 'dice', nodes: 'nodes', abc: 'abc', ayn: 'ayn', leaf: 'leaf', lever: 'lever', bone: 'bone' };
 
 export function SubjectIcon({ id, size = 20 }: { id: SubjectId; size?: number }) {
   return <Icon name={SUBJECT_ICON[subjectById(id).icon]} size={size} />;
@@ -142,7 +142,7 @@ export function Confetti({ run = true }: { run?: boolean }) {
     canvas.width = W * dpr;
     canvas.height = H * dpr;
     ctx.scale(dpr, dpr);
-    const colors = ['#5b3df5', '#ffb51e', '#17a85a', '#ec3e63', '#0b93d8', '#ff7a1a'];
+    const colors = ['#0f8a83', '#ff7d5c', '#17a85a', '#ec3e63', '#0b93d8', '#ff7a1a'];
     const parts = Array.from({ length: 140 }, () => ({
       x: W / 2 + (Math.random() - 0.5) * W * 0.3,
       y: H * 0.35,

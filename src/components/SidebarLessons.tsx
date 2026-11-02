@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { GRADES, MAJOR_INFO } from '../content';
-import type { Grade, Lesson, Major, Subject } from '../content/types';
+import type { Lesson, Subject } from '../content/types';
 import { fmt } from '../lib/digits';
 import { buildPath, currentIndex, lastActivity, lessonProgress } from '../lib/learner';
 import { go, openPathNode, type Route } from '../lib/nav';
 import type { AppState } from '../lib/state';
 import { update, useAppState } from '../lib/store';
-import { setStudy, studySubjects, viewGrade } from '../lib/study';
+import { studySubjects, viewGrade } from '../lib/study';
 import { Icon } from './Icon';
 import { Ring, SubjectIcon } from './ui';
 
@@ -32,7 +31,6 @@ export function SidebarLessons({ route }: { route: Route }) {
 
   return (
     <section className="side-lessons" aria-label="درس‌های من">
-      <ScopePicker grade={grade} major={major} />
       {book ? (
         <>
           <BookPicker s={s} books={books} book={book} />
@@ -51,39 +49,6 @@ export function SidebarLessons({ route }: { route: Route }) {
   );
 }
 
-/** «پایهٔ دوازدهم · ریاضی»: one line; tapping it opens the grade and major choices right under it. */
-function ScopePicker({ grade, major }: { grade: Grade; major: Major }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="sl-scope">
-      <button className="sl-head" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
-        <Icon name="graduation" size={17} />
-        <span className="sl-head-name">
-          پایهٔ {GRADES.find((g) => g.id === grade)?.title} · {MAJOR_INFO.find((m) => m.id === major)?.short}
-        </span>
-        <Icon name="down" size={14} className="sl-chev" />
-      </button>
-      {open && (
-        <div className="sl-scope-body">
-          <div className="sl-tabs" role="group" aria-label="پایه">
-            {GRADES.map((g) => (
-              <button key={g.id} aria-pressed={g.id === grade} onClick={() => update((st) => setStudy(st, g.id, major))}>
-                {g.title}
-              </button>
-            ))}
-          </div>
-          <div className="sl-tabs" role="group" aria-label="رشته">
-            {MAJOR_INFO.map((m) => (
-              <button key={m.id} aria-pressed={m.id === major} onClick={() => update((st) => setStudy(st, grade, m.id))}>
-                {m.short}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
 /**
  * The book switch: the open book on one line, and a list of every book under it when tapped. Our own list, not a

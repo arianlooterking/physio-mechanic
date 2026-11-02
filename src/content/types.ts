@@ -328,7 +328,7 @@ export interface Subject {
   field: Field;
   book: string;
   color: string;
-  icon: 'calc' | 'atom' | 'flask' | 'geo' | 'dice' | 'nodes' | 'abc' | 'ayn' | 'leaf';
+  icon: 'calc' | 'atom' | 'flask' | 'geo' | 'dice' | 'nodes' | 'abc' | 'ayn' | 'leaf' | 'lever' | 'bone';
   pdf: string;
   pdfOffset: number;
   lessons: Lesson[];

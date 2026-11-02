@@ -7,10 +7,10 @@
     "androidScheme": "https"
   },
   "android": {
-    "backgroundColor": "#f5f3ff"
+    "backgroundColor": "#f6f3ec"
   },
   "ios": {
-    "backgroundColor": "#f5f3ff",
+    "backgroundColor": "#f6f3ec",
     "contentInset": "never"
   },
   "plugins": {
@@ -22,7 +22,7 @@
     },
     "LocalNotifications": {
       "smallIcon": "ic_stat_biomana",
-      "iconColor": "#5b3df5"
+      "iconColor": "#0f8a83"
     }
   }
 }

@@ -449,3 +449,20 @@
   flex: 1;
   min-width: 150px;
 }
+
+/* Biomana: the weight on the lever unit art nods up and down, like a load being lifted. */
+.ua-weight {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ua-weight 2.8s ease-in-out infinite;
+}
+@keyframes ua-weight {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ua-weight {
+    animation: none;
+  }
+}

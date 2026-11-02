@@ -215,7 +215,7 @@ function TutorCard() {
     <div className="card row" style={{ alignItems: 'flex-start' }}>
       <Mascot mood={p === 'offline' ? 'calm' : 'happy'} size={52} glow={false} />
       <div className="grow small">
-        <b>فهمی، معلم هوش مصنوعی</b>
+        <b>بیو، معلم هوش مصنوعی</b>
         <div className="muted">
           {p === null
             ? 'در حال بررسی…'

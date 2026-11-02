@@ -78,7 +78,7 @@ mark.term.tap:focus-visible {
   border-radius: 20px;
   background: var(--surface);
   border: 1.5px solid color-mix(in srgb, var(--primary) 28%, var(--line));
-  box-shadow: 0 24px 60px -20px rgba(35, 20, 110, 0.45), 0 4px 0 color-mix(in srgb, var(--primary) 18%, var(--line));
+  box-shadow: 0 24px 60px -20px rgba(16, 41, 47, 0.45), 0 4px 0 color-mix(in srgb, var(--primary) 18%, var(--line));
   color: var(--ink);
   transform-origin: var(--ax, 50%) 100%;
 }

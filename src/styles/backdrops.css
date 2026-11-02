@@ -517,3 +517,59 @@
     animation: none;
   }
 }
+
+/* ---------- Biomana pieces: bone, sarcomere, forearm lever ---------- */
+.lb-bone path {
+  fill: none;
+  stroke: var(--u);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.lb-bone .nuc {
+  fill: var(--surface);
+  stroke: var(--u);
+}
+.lb-sarc .myo {
+  stroke: var(--accent);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.lb-sarc .slide {
+  animation: lb-contract 2.6s ease-in-out infinite alternate;
+}
+@keyframes lb-contract {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0.82);
+  }
+}
+.lb-sarc .slide {
+  transform-origin: 30px 45px;
+}
+.lb-lever {
+  width: 104px;
+}
+.lb-lever svg {
+  width: 90px;
+}
+.lb-lever .tilt {
+  transform-origin: 45px 38px;
+  animation: lb-tilt 3s ease-in-out infinite alternate;
+}
+@keyframes lb-tilt {
+  from {
+    transform: rotate(6deg);
+  }
+  to {
+    transform: rotate(-6deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lb-sarc .slide,
+  .lb-lever .tilt {
+    animation: none;
+  }
+}

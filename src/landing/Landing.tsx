@@ -544,10 +544,10 @@ function Loop() {
 
 /** The four parts of the book: what each covers and whether its lessons are ready. */
 const PARTS: { id: string; title: string; icon: IconName; color: string; chapters: string[] }[] = [
-  { id: 'bm1', title: 'مقدمه و مفاهیم پایه', icon: 'atom', color: 'phys', chapters: ['صفحه‌ها و محورها', 'نیرو و گشتاور', 'اهرم‌ها و تعادل', 'تنش و کرنش', 'ویسکوالاستیسیته'] },
-  { id: 'bm2', title: 'بیومکانیک بافت‌ها', icon: 'leaf', color: 'bio', chapters: ['استخوان', 'غضروف مفصلی', 'تاندون و لیگامان', 'اعصاب محیطی', 'عضلهٔ اسکلتی'] },
-  { id: 'bm3', title: 'بیومکانیک مفصل‌ها', icon: 'nodes', color: 'math', chapters: ['زانو', 'ران', 'مچ و کف پا', 'ستون فقرات کمری و گردنی', 'شانه', 'آرنج', 'مچ و دست'] },
-  { id: 'bm4', title: 'بیومکانیک کاربردی', icon: 'dumbbell', color: 'chem', chapters: ['تثبیت شکستگی', 'آرتروپلاستی', 'راه رفتن'] },
+  { id: 'bm1', title: 'مقدمه و مفاهیم پایه', icon: 'lever', color: 'phys', chapters: ['صفحه‌ها و محورها', 'نیرو و گشتاور', 'اهرم‌ها و تعادل', 'تنش و کرنش', 'ویسکوالاستیسیته'] },
+  { id: 'bm2', title: 'بیومکانیک بافت‌ها', icon: 'bone', color: 'bio', chapters: ['استخوان', 'غضروف مفصلی', 'تاندون و لیگامان', 'اعصاب محیطی', 'عضلهٔ اسکلتی'] },
+  { id: 'bm3', title: 'بیومکانیک مفصل‌ها', icon: 'joint', color: 'math', chapters: ['زانو', 'ران', 'مچ و کف پا', 'ستون فقرات کمری و گردنی', 'شانه', 'آرنج', 'مچ و دست'] },
+  { id: 'bm4', title: 'بیومکانیک کاربردی', icon: 'muscle', color: 'chem', chapters: ['تثبیت شکستگی', 'آرتروپلاستی', 'راه رفتن'] },
 ];
 
 function Subjects({ onStart }: { onStart: () => void }) {
@@ -760,7 +760,7 @@ function Features() {
     <section className="fl-sec" id="features" aria-labelledby="h-features">
       <div className="fl-wrap">
         <Head id="h-features" tag="امکانات" title="هر چیزی که برای فهمیدن و نگه‌داشتن لازم است">
-          فهمیدن شروع کار است. تمرین، مرور فاصله‌دار و آزمون، آن را تا روز کنکور در ذهنت نگه می‌دارند.
+          فهمیدن شروع کار است. تمرین، مرور فاصله‌دار و آزمون، آن را تا روز امتحان و کار بالینی در ذهنت نگه می‌دارند.
         </Head>
         <div className="fl-bento">
           <motion.article className="fl-tile wide t-violet" {...rv(0)}>
@@ -798,7 +798,7 @@ function Features() {
               <span className="fl-tile-ico">
                 <Icon name="chat" size={22} />
               </span>
-              <h3>فهمی، معلم هوشمند</h3>
+              <h3>بیو، معلم هوشمند</h3>
               <p>هر جا گیر کردی از بیو بپرس، یا مفهوم را برایش توضیح بده تا ببینی واقعاً فهمیده‌ای. با زبان ساده و فارسی روان جواب می‌دهد.</p>
             </div>
             <Chat />
