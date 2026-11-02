@@ -7,5 +7,6 @@
   Never copy text, figures or problems from the book, and never add pirated copies of it to the repo.
 - Lessons live in `src/content/bm/` (`lesson1.ts`…), grouped in `part1.ts` / `part2.ts`; glossary, intros and warmups in the same folder.
 - Tests: `npx vitest run` (content rules are in `tests/content.test.ts`). Build: `npm run build`.
-- Deploy: Cloudflare Worker `biomana` (`wrangler.jsonc`). Set the KV namespace id (`BIOMANA_KV`) before the first deploy.
+- Deploy: Cloudflare Worker `biomana` (`wrangler.jsonc`), https://biomana.don-aasd.workers.dev. Workers Builds deploys on every push to `main`
+  (build `npm run build`, deploy `npx wrangler deploy`). Sign-in needs the `SESSION_SECRET` secret on the Worker.
 - Never commit `.dev.vars` or any secret.

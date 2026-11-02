@@ -15,16 +15,17 @@
   "kv_namespaces": [
     {
       "binding": "BIOMANA_KV",
-      "id": "REPLACE_WITH_BIOMANA_KV_ID" // create with: npx wrangler kv namespace create BIOMANA_KV
+      "id": "3222059f5c6d4268a5a59e9e8e50a379"
     }
   ],
-  // Public: the OAuth web client id for Google sign-in, and the Google accounts (comma-separated)
+  // Public: the OAuth web client id for Google sign-in (shared with Fahmana; biomana.don-aasd.workers.dev must be
+  // listed in its Authorized JavaScript origins), and the Google accounts (comma-separated)
   // that may read content reports at /admin/reports. Secrets (SESSION_SECRET, ANTHROPIC_API_KEY)
   // are set with `wrangler secret put`, or in .dev.vars locally.
   // APPLE_SERVICES_ID switches Sign in with Apple on (worker/apple.ts): "com.biomana.web" once that Services ID
   // exists in the Apple Developer account with this site's domain and /api/apple-callback as its return URL.
   "vars": {
-    "GOOGLE_CLIENT_ID": "",
+    "GOOGLE_CLIENT_ID": "31449414483-dqpos4h44v70eprd8oo7l7j4cmiq4sig.apps.googleusercontent.com",
     "ADMIN_EMAILS": "thearianasadi@gmail.com"
   }
 }
