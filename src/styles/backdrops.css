@@ -1,0 +1,519 @@
+/* ============================================================
+   Backdrops: behind the app's tabs and behind lesson sessions
+   ============================================================ */
+.app-bg,
+.lesson-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.session {
+  background: transparent;
+}
+
+/* app tabs */
+.app-bg {
+  --tint: var(--primary);
+}
+.ab-blob {
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.16;
+  background: radial-gradient(circle, var(--tint), transparent 65%);
+  animation: ab-drift 26s ease-in-out infinite alternate;
+}
+.ab-blob.b1 {
+  top: -18vmax;
+  inset-inline-end: -14vmax;
+}
+.ab-blob.b2 {
+  bottom: -20vmax;
+  inset-inline-start: -16vmax;
+  background: radial-gradient(circle, var(--accent), transparent 65%);
+  opacity: 0.12;
+  animation-duration: 32s;
+  animation-direction: alternate-reverse;
+}
+.ab-blob.b3 {
+  top: 34%;
+  inset-inline-start: 38%;
+  width: 30vmax;
+  height: 30vmax;
+  opacity: 0.08;
+  animation-duration: 38s;
+}
+@keyframes ab-drift {
+  50% {
+    transform: translate3d(-4vmax, 3vmax, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(3vmax, -2vmax, 0) scale(0.95);
+  }
+}
+.ab-symbols span {
+  position: absolute;
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--tint);
+  opacity: 0.09;
+  animation: ab-float 14s ease-in-out infinite;
+}
+@keyframes ab-float {
+  50% {
+    transform: translateY(-16px) rotate(6deg);
+  }
+}
+
+/* lesson sessions */
+.lesson-bg {
+  --u: var(--primary);
+  color: var(--u);
+}
+.lb-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 85% -10%, color-mix(in srgb, var(--u) 16%, transparent), transparent 55%),
+    radial-gradient(ellipse at 0% 105%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 50%);
+}
+.lb-paper {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse at 50% 40%, transparent 30%, #000 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, transparent 30%, #000 75%);
+}
+.lb-hesaban .lb-paper {
+  background-image: linear-gradient(color-mix(in srgb, var(--u) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--u) 14%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.lb-physics .lb-paper {
+  background-image: radial-gradient(color-mix(in srgb, var(--u) 30%, transparent) 1.4px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+.lb-chemistry .lb-paper {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='48' viewBox='0 0 42 48'%3E%3Cpath d='M21 2 40 13v22L21 46 2 35V13z' fill='none' stroke='%230ea56f' stroke-opacity='.22' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-size: 42px 48px;
+}
+.lb-biology .lb-paper {
+  background-image: radial-gradient(circle at 50% 50%, transparent 15px, color-mix(in srgb, var(--u) 16%, transparent) 16px, transparent 17.5px);
+  background-size: 44px 44px;
+}
+.lb-language .lb-paper {
+  background-image: linear-gradient(color-mix(in srgb, var(--u) 18%, transparent) 1px, transparent 1px);
+  background-size: 100% 30px;
+}
+.lb-piece {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--u) 22%, var(--line));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--u) 12%, transparent);
+  color: var(--u);
+  opacity: 0.9;
+  animation: lb-float 11s ease-in-out infinite;
+}
+@keyframes lb-float {
+  50% {
+    transform: translateY(-14px) rotate(-2deg);
+  }
+}
+.lb-chip {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+.lb-chip.c1 {
+  top: 16%;
+  right: max(16px, calc(50% - 520px));
+  animation-duration: 12s;
+}
+.lb-chip.c2 {
+  top: 70%;
+  left: max(16px, calc(50% - 540px));
+  animation-duration: 14s;
+  animation-delay: -5s;
+}
+.lb-chip.c3 {
+  top: 84%;
+  right: max(40px, calc(50% - 470px));
+  animation-duration: 10s;
+  animation-delay: -3s;
+}
+.lb-plot {
+  top: 30%;
+  left: max(14px, calc(50% - 560px));
+  width: 150px;
+  padding: 8px;
+  overflow: hidden;
+  animation-duration: 13s;
+  animation-delay: -2s;
+}
+.lb-plot svg {
+  width: 100%;
+  display: block;
+}
+.lb-plot .ax {
+  stroke: var(--plot-axis);
+  stroke-width: 1.4;
+  fill: none;
+  opacity: 0.6;
+}
+.lb-plot .curve {
+  fill: none;
+  stroke: var(--plot-base);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 5 5;
+}
+.lb-plot .curve.two {
+  stroke: var(--plot-main);
+  stroke-dasharray: none;
+  animation: lb-shift 5s ease-in-out infinite alternate;
+}
+@keyframes lb-shift {
+  from {
+    transform: translateX(-20px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.lb-atom {
+  top: 22%;
+  left: max(16px, calc(50% - 540px));
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  animation-duration: 14s;
+}
+.lb-atom svg {
+  width: 82px;
+  height: 82px;
+}
+.lb-atom ellipse {
+  fill: none;
+  stroke: var(--u);
+  stroke-width: 1.6;
+  opacity: 0.55;
+}
+.lb-atom .nuc {
+  fill: var(--accent);
+}
+.lb-atom .e {
+  fill: var(--u);
+}
+.lb-pendulum {
+  top: 62%;
+  right: max(18px, calc(50% - 520px));
+  width: 74px;
+  padding: 6px;
+  animation-duration: 12s;
+  animation-delay: -4s;
+}
+.lb-pendulum svg {
+  width: 60px;
+  display: block;
+}
+.lb-pendulum .bar,
+.lb-pendulum .rod {
+  stroke: var(--ink-3);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.lb-pendulum .bob {
+  fill: var(--u);
+}
+.lb-pendulum .swing {
+  transform-origin: 30px 4px;
+  animation: lb-swing 2.4s ease-in-out infinite alternate;
+}
+@keyframes lb-swing {
+  from {
+    transform: rotate(22deg);
+  }
+  to {
+    transform: rotate(-22deg);
+  }
+}
+.lb-arrow {
+  top: 84%;
+  left: max(24px, calc(50% - 480px));
+  padding: 6px 12px;
+  gap: 2px;
+  animation-duration: 10s;
+  animation-delay: -6s;
+}
+.lb-arrow svg {
+  width: 100px;
+  stroke: var(--plot-main);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: lb-push 2.2s ease-in-out infinite;
+}
+@keyframes lb-push {
+  50% {
+    transform: translateX(-8px);
+  }
+}
+.lb-flask {
+  top: 26%;
+  left: max(16px, calc(50% - 540px));
+  width: 84px;
+  padding: 10px;
+  animation-duration: 13s;
+}
+.lb-flask svg {
+  width: 60px;
+  display: block;
+  overflow: visible;
+}
+.lb-flask .glass {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+.lb-flask .liquid {
+  fill: color-mix(in srgb, var(--u) 55%, transparent);
+}
+.lb-flask .bub {
+  fill: #fff;
+  opacity: 0.85;
+  animation: lb-bubble 2.6s ease-in infinite;
+}
+.lb-flask .b2 {
+  animation-delay: -0.9s;
+}
+.lb-flask .b3 {
+  animation-delay: -1.7s;
+}
+@keyframes lb-bubble {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-58px);
+    opacity: 0;
+  }
+}
+.lb-hex {
+  top: 60%;
+  right: max(18px, calc(50% - 520px));
+  width: 86px;
+  height: 86px;
+  border-radius: 22px;
+  animation-duration: 15s;
+  animation-delay: -3s;
+}
+.lb-hex svg {
+  width: 70px;
+  fill: none;
+  stroke: var(--u);
+  stroke-width: 2.2;
+  animation: lb-spin 30s linear infinite;
+}
+.lb-hex .inner {
+  stroke-dasharray: 4 4;
+  opacity: 0.6;
+}
+.lb-hex circle {
+  fill: var(--accent);
+  stroke: none;
+}
+@keyframes lb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.lb-badge {
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+}
+.lb-badge.good {
+  top: 46%;
+  right: max(22px, calc(50% - 430px));
+  color: #fff;
+  background: var(--ok);
+  border-color: transparent;
+  animation-duration: 8s;
+  animation-delay: -3s;
+}
+.lb-badge.idea {
+  top: 10%;
+  left: max(30px, calc(50% - 420px));
+  animation-duration: 10s;
+  animation-delay: -6s;
+}
+.lb-star {
+  position: absolute;
+  color: var(--accent);
+  font-size: 18px;
+  opacity: 0.8;
+  animation: lb-twinkle 3.6s ease-in-out infinite;
+}
+.lb-star.s1 {
+  top: 8%;
+  right: max(120px, calc(50% - 380px));
+}
+.lb-star.s2 {
+  top: 50%;
+  left: max(26px, calc(50% - 580px));
+  color: var(--u);
+  animation-delay: -1.2s;
+}
+.lb-star.s3 {
+  top: 76%;
+  right: max(60px, calc(50% - 360px));
+  font-size: 12px;
+  animation-delay: -2.4s;
+}
+@keyframes lb-twinkle {
+  50% {
+    opacity: 0.25;
+    transform: scale(0.7) rotate(20deg);
+  }
+}
+
+/* Phones: the content fills the screen, so only a few small pieces peek in at the edges. */
+@media (max-width: 760px) {
+  .lb-piece,
+  .lb-star {
+    opacity: 0.5;
+  }
+  .lb-chip.c2,
+  .lb-chip.c3,
+  .lb-badge.idea,
+  .lb-star.s3,
+  .lb-arrow {
+    display: none;
+  }
+  .lb-plot,
+  .lb-atom,
+  .lb-flask {
+    top: auto;
+    bottom: 18%;
+    left: -40px;
+    scale: 0.75;
+  }
+  .lb-pendulum,
+  .lb-hex {
+    top: 12%;
+    right: -26px;
+    scale: 0.75;
+  }
+  .lb-chip.c1 {
+    top: auto;
+    bottom: 34%;
+    right: -30px;
+    scale: 0.85;
+  }
+  .lb-badge.good {
+    top: 40%;
+    right: -12px;
+    scale: 0.85;
+  }
+  .ab-symbols span:nth-child(n + 6) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-blob,
+  .ab-symbols span,
+  .lb-piece,
+  .lb-star,
+  .lb-plot .curve.two,
+  .lb-pendulum .swing,
+  .lb-arrow svg,
+  .lb-flask .bub,
+  .lb-hex svg {
+    animation: none !important;
+  }
+}
+
+/* A lesson's overview: the backdrop fills only the middle column between the sidebar and the rail. Two slow glows in
+   the subject colour drift behind the page, and the pieces sit small in the margins beside the cards. */
+@media (min-width: 1000px) {
+  .lesson-bg.lb-framed {
+    right: 250px;
+    left: 320px;
+  }
+}
+.lb-glow {
+  position: absolute;
+  width: 34vmax;
+  height: 34vmax;
+  border-radius: 50%;
+  filter: blur(50px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--u) 34%, transparent), transparent 65%);
+  animation: lb-glow 22s ease-in-out infinite alternate;
+}
+.lb-glow.g1 {
+  top: -12vmax;
+  right: -8vmax;
+}
+.lb-glow.g2 {
+  bottom: -14vmax;
+  left: -10vmax;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 24%, transparent), transparent 65%);
+  animation-duration: 28s;
+  animation-direction: alternate-reverse;
+}
+@keyframes lb-glow {
+  50% {
+    transform: translate3d(-6vmax, 5vmax, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(4vmax, 2vmax, 0) scale(0.9);
+  }
+}
+.lb-framed .lb-paper {
+  opacity: 0.8;
+  mask-image: linear-gradient(90deg, #000, transparent 22%, transparent 78%, #000);
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent 22%, transparent 78%, #000);
+}
+.lb-framed .lb-piece,
+.lb-framed .lb-star {
+  opacity: 0.75;
+  scale: 0.8;
+}
+.lb-framed .lb-piece:is(.c1, .c3, .good, .lb-pendulum, .lb-hex),
+.lb-framed .lb-star:is(.s1, .s3) {
+  right: 14px;
+  left: auto;
+  transform-origin: right center;
+}
+.lb-framed .lb-piece:is(.c2, .idea, .lb-plot, .lb-atom, .lb-flask, .lb-arrow),
+.lb-framed .lb-star.s2 {
+  left: 14px;
+  right: auto;
+  transform-origin: left center;
+}
+/* Too narrow for margins: only the glows and the paper stay. */
+@media (max-width: 1399px) {
+  .lb-framed .lb-piece,
+  .lb-framed .lb-star {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lb-glow {
+    animation: none;
+  }
+}

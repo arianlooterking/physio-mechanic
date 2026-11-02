@@ -1,0 +1,20 @@
+node_modules
+dist
+release
+.env
+.env.local
+*.log
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
+
+# large / local-only
+books/
+marketing/promo/*.mp4
+marketing/promo/*.wav
+dist/
+.wrangler/
+dist-app

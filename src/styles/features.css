@@ -1,0 +1,761 @@
+/* ============================================================
+   «آزمون جامع», «چالش امروز», lesson search, «گزارش هفته»
+   Colours come from the theme tokens, so light and dark both follow.
+   ============================================================ */
+
+/* ---------- «آزمون جامع»: setup ---------- */
+.mx-hero {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 4px;
+}
+.mx-hero h1 {
+  font-size: 1.5rem;
+}
+.mx-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.02rem;
+  margin: 22px 2px 10px;
+}
+.mx-step > span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.85rem;
+  flex: none;
+}
+.mx-shelves {
+  display: grid;
+  gap: 14px;
+}
+.mx-shelf-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 2px 6px;
+  color: var(--ink-3);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.mx-shelf-mine {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.72rem;
+}
+.mx-books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mx-books button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 6px 14px;
+  border-radius: 14px;
+  border: 1.5px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.mx-books button svg {
+  color: var(--sc);
+}
+.mx-books button[aria-checked='true'] {
+  border-color: var(--sc);
+  background: color-mix(in srgb, var(--sc) 14%, var(--surface));
+  color: var(--ink);
+}
+.mx-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 8px;
+}
+.mx-quick .link-btn:disabled {
+  opacity: 0.45;
+}
+.mx-note {
+  margin: 6px 2px 10px;
+}
+.mx-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mx-chapter {
+  padding: 6px 14px;
+}
+.mx-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.mx-check input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.mx-chapter-head {
+  border-bottom: 1px solid var(--line);
+}
+.mx-lesson {
+  padding-inline-start: 8px;
+}
+.mx-lesson + .mx-lesson {
+  border-top: 1px dashed var(--line);
+}
+.mx-lesson .grow {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.55;
+}
+.mx-lesson-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.mx-started {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+}
+.mx-seg button {
+  flex: 1;
+  min-height: 42px;
+}
+.mx-timer {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.mx-rules {
+  margin-top: 14px;
+}
+
+/* ---------- «آزمون جامع»: running ---------- */
+.mx-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 14px;
+}
+.mx-grid button {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  border: 2px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink-2);
+}
+.mx-grid button.on {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.mx-grid button.cur {
+  border-color: var(--primary);
+}
+.mx-flag {
+  position: absolute;
+  top: -7px;
+  inset-inline-end: -5px;
+  font-size: 12px;
+  line-height: 1;
+}
+.mx-tools {
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+/* ---------- «آزمون جامع»: result ---------- */
+/* Two lines per lesson: name and score, then the bar and «تمرین این درس». */
+.mx-lesson-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  align-items: center;
+  padding: 10px 0;
+}
+.mx-lesson-row + .mx-lesson-row {
+  border-top: 1px solid var(--line);
+}
+.mx-lesson-name {
+  all: unset;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: start;
+  border-radius: 8px;
+}
+.mx-lesson-name:hover {
+  text-decoration: underline;
+}
+.mx-lesson-name:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.mx-lesson-go {
+  justify-self: end;
+}
+.mx-lesson-hint {
+  margin: -4px 0 8px;
+}
+.mx-filter {
+  flex-wrap: nowrap;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+.mx-filter button {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 40px;
+  padding: 6px 2px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.mx-filter button:disabled {
+  opacity: 0.45;
+}
+.mx-review .q-kicker {
+  margin-top: 0;
+}
+.mx-review .options {
+  gap: 8px;
+}
+.mx-review .opt {
+  min-height: 46px;
+  animation: none;
+}
+
+/* ---------- «چالش امروز» ---------- */
+.daily-card {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+  background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 14%, var(--surface)), var(--surface) 70%);
+}
+.daily-card.done {
+  border-color: color-mix(in srgb, var(--ok) 35%, var(--line));
+  background: linear-gradient(160deg, color-mix(in srgb, var(--ok) 10%, var(--surface)), var(--surface) 70%);
+}
+.daily-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.daily-ic {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: #3a2600;
+  box-shadow: 0 3px 0 var(--accent-dark);
+  flex: none;
+}
+.daily-card.done .daily-ic {
+  background: var(--ok);
+  color: #fff;
+  box-shadow: 0 3px 0 var(--ok-dark);
+}
+.daily-kicker {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--accent-dark);
+}
+.daily-card.done .daily-kicker {
+  color: var(--ok-ink);
+}
+.daily-top b {
+  display: block;
+  line-height: 1.55;
+}
+.daily-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.daily-streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ink-3);
+}
+.daily-streak.on {
+  color: var(--flame);
+}
+.dc-meta {
+  justify-content: space-between;
+  margin: 8px 0 4px;
+}
+.dc-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+.dc-dots i {
+  width: 22px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--surface-3);
+}
+.dc-dots i.cur {
+  background: var(--accent);
+}
+.dc-dots i.ok {
+  background: var(--ok);
+}
+.dc-dots i.bad {
+  background: var(--bad);
+}
+.dc-marks {
+  display: inline-flex;
+  gap: 8px;
+}
+.dc-marks > span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: #fff;
+}
+.dc-marks > span.ok {
+  background: var(--ok);
+  box-shadow: 0 3px 0 var(--ok-dark);
+}
+.dc-marks > span.bad {
+  background: var(--bad);
+  box-shadow: 0 3px 0 var(--bad-dark);
+}
+.dc-marks.sm {
+  gap: 5px;
+}
+.dc-marks.sm > span {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.dc-copy {
+  min-width: 200px;
+}
+.dc-q {
+  gap: 10px;
+}
+.dc-q-mark {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  color: #fff;
+  flex: none;
+  margin-top: 2px;
+}
+.dc-q-mark.ok {
+  background: var(--ok);
+}
+.dc-q-mark.bad {
+  background: var(--bad);
+}
+.dc-q-answer {
+  margin-top: 4px;
+}
+.dc-share {
+  height: auto;
+  padding: 10px 14px;
+  line-height: 1.8;
+  resize: none;
+  font-weight: 500;
+}
+
+/* ---------- lesson search ---------- */
+.lsearch {
+  margin: 0 0 14px;
+}
+.lsearch-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 50px;
+  padding: 0 14px;
+  border-radius: 16px;
+  border: 2px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink-3);
+}
+.lsearch-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: var(--ring);
+}
+.lsearch-box input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 700;
+}
+.lsearch-box input:focus-visible {
+  box-shadow: none;
+  border-radius: 0;
+}
+.lsearch-box input::placeholder {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.lsearch-box input::-webkit-search-cancel-button {
+  display: none;
+}
+.lsearch-box .icon-btn {
+  width: 34px;
+  height: 34px;
+}
+.lsearch-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+.lsearch-count {
+  margin: 0 4px;
+}
+.lsearch-hit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: start;
+  color: var(--ink);
+}
+.lsearch-hit:hover {
+  border-color: var(--primary);
+}
+.lsearch-hit > svg {
+  color: var(--ink-3);
+  flex: none;
+}
+.lsearch-ic {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--sc) 16%, var(--surface));
+  color: var(--sc);
+  flex: none;
+}
+.lsearch-hit .grow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.lsearch-title {
+  line-height: 1.55;
+}
+.lsearch-why {
+  margin-top: 4px;
+  font-size: 0.76rem;
+  padding: 2px 10px;
+  white-space: normal;
+  max-width: 100%;
+}
+.lsearch-none {
+  padding: 8px 4px;
+}
+
+/* ---------- «گزارش هفته» ---------- */
+.wr-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 10px;
+  margin-bottom: 12px;
+}
+.wr-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (min-width: 640px) {
+  .wr-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.wr-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  min-width: 0;
+}
+.wr-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.wr-value {
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.4;
+}
+.wr-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.wr-delta.up {
+  color: var(--ok-ink);
+}
+.wr-chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 16px 0 8px;
+}
+.wr-seg button {
+  padding: 4px 12px;
+}
+.wr-chart {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 2px;
+  height: 128px;
+  padding-top: 22px;
+  border-bottom: 1px solid var(--line-2);
+  background: linear-gradient(var(--line), var(--line)) 0 22px / 100% 1px no-repeat;
+}
+.wr-max {
+  position: absolute;
+  top: 2px;
+  inset-inline-start: 0;
+  font-variant-numeric: tabular-nums;
+}
+.wr-col {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  outline: none;
+  border-radius: 8px;
+}
+.wr-col:hover,
+.wr-col:focus-visible {
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+}
+.wr-bar {
+  width: 100%;
+  max-width: 24px;
+  min-height: 0;
+  border-radius: 4px 4px 0 0;
+  background: var(--primary);
+  transition: height 0.4s ease;
+}
+.wr-col:hover .wr-bar,
+.wr-col:focus-visible .wr-bar {
+  background: var(--primary-2);
+}
+.wr-cap {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--ink-2);
+  line-height: 1.5;
+  min-height: 1.1em;
+}
+.wr-tip {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 0.76rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 3;
+}
+.wr-tip span {
+  opacity: 0.75;
+}
+.wr-col:first-child .wr-tip {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.wr-col:last-child .wr-tip {
+  left: 0;
+  transform: none;
+}
+.wr-col:hover .wr-tip,
+.wr-col:focus-visible .wr-tip {
+  opacity: 1;
+}
+.wr-axis {
+  display: flex;
+  justify-content: space-around;
+  gap: 2px;
+  margin-top: 4px;
+}
+.wr-axis span {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  color: var(--ink-3);
+}
+.wr-axis span.today {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+/* ---------- «آزمون‌های جامع» on Progress ---------- */
+.exam-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.exam-score {
+  font-size: 1.05rem;
+  flex: none;
+}
+.exam-score.good {
+  color: var(--ok-ink);
+}
+
+/* The XP chart on Progress: «چهارشنبه» is wider than a column at 375px and used to break in two. */
+.week .col > span:last-child {
+  white-space: nowrap;
+  font-size: 0.66rem;
+}
+
+/* ---------- «کارت واژه» ---------- */
+.wc-books {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.wc-stage {
+  touch-action: pan-y;
+  transition: transform 0.18s ease-out;
+}
+.wc-stage.yes .fc-face.back {
+  border-color: var(--ok);
+}
+.wc-stage.no .fc-face.back {
+  border-color: var(--bad);
+}
+.wc-term {
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1.5;
+}
+.wc-term.sm {
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+.wc-example {
+  font-weight: 600;
+  line-height: 1.8;
+}
+.wc-undo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 4px auto 0;
+}
+
+/* ---------- «نکته‌های کنکوری» ---------- */
+.kt-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.kt {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  line-height: 1.9;
+}
+.kt-kind {
+  font-size: 0.75rem;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+.kt-trap .kt-kind {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+.kt-short .kt-kind {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+.kt-freq .kt-kind {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+@media print {
+  .kt-kind {
+    border: 1px solid currentColor;
+    background: none !important;
+  }
+}

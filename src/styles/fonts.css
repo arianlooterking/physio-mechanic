@@ -1,0 +1,40 @@
+/* Vazirmatn with Persian digits: every 0-9 in the UI is drawn as ۰-۹. */
+@font-face {
+  font-family: 'Biomana';
+  src: url('../assets/fonts/Vazirmatn-FD-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Biomana';
+  src: url('../assets/fonts/Vazirmatn-FD-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Biomana';
+  src: url('../assets/fonts/Vazirmatn-FD-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Biomana';
+  src: url('../assets/fonts/Vazirmatn-FD-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Biomana';
+  src: url('../assets/fonts/Vazirmatn-FD-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
+/* Only the digits (and the Persian decimal separator) of this face are used inside formulas,
+   so KaTeX keeps its own letters and symbols but shows numbers the way the textbook does. */
+@font-face {
+  font-family: 'FaDigits';
+  src: url('../assets/fonts/Vazirmatn-FD-Regular.woff2') format('woff2');
+  unicode-range: U+0030-0039, U+066B, U+066C;
+  font-display: swap;
+}
