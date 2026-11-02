@@ -1,0 +1,28 @@
+{
+  "appId": "com.biomana.app",
+  "appName": "بیومانا",
+  "webDir": "dist-app",
+  "server": {
+    "hostname": "app.biomana.com",
+    "androidScheme": "https"
+  },
+  "android": {
+    "backgroundColor": "#f6f3ec"
+  },
+  "ios": {
+    "backgroundColor": "#f6f3ec",
+    "contentInset": "never"
+  },
+  "plugins": {
+    "CapacitorUpdater": {
+      "autoUpdate": false,
+      "statsUrl": "",
+      "appReadyTimeout": 15000,
+      "resetWhenUpdate": true
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_biomana",
+      "iconColor": "#0f8a83"
+    }
+  }
+}

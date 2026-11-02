@@ -1,0 +1,742 @@
+/* «آزمایشگاه آزاد»: the free graphing sandbox (screens/Lab.tsx). */
+.lab .lab-fn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lab .lab-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: none;
+}
+.lab .lab-name {
+  font-weight: 800;
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  color: var(--ink-2);
+  white-space: nowrap;
+  flex: none;
+}
+.lab .lab-input {
+  flex: 1 1 auto;
+  height: 46px;
+  font-size: 1.05rem;
+  text-align: left;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+.lab .lab-read {
+  min-height: 26px;
+  padding-inline-start: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 1.02rem;
+}
+.lab .lab-read > span[dir='ltr'] {
+  display: inline-block;
+}
+.lab .lab-err {
+  color: var(--bad-ink);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+.lab .lab-plot .plot {
+  width: 100%;
+  height: auto;
+}
+.lab .lab-asks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.lab .lab-asks .chip {
+  cursor: pointer;
+  border: 0;
+  padding: 7px 14px;
+  font-family: inherit;
+}
+.lab .lab-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  line-height: 2;
+  overflow-x: auto;
+}
+
+/* «پیش از درس» (screens/Warmup.tsx). */
+.warmup .warmup-uses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.warmup .warmup-uses .chip {
+  white-space: normal;
+}
+.warmup .warmup-goals {
+  margin: 0;
+  padding-inline-start: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  line-height: 1.9;
+}
+
+/* «آزمایشگاه دنباله» (screens/SeqLab.tsx): terms, differences and ratios in aligned columns. */
+.lab .seq-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.lab .seq-row {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+}
+.lab .seq-h {
+  flex: none;
+  width: 52px;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--ink-2);
+}
+.lab .seq-c {
+  flex: none;
+  min-width: 48px;
+  padding: 6px 4px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  text-align: center;
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+/* Differences and ratios sit between two terms. */
+.lab .seq-gap {
+  transform: translateX(-26px);
+  background: transparent;
+  border: 1.5px dashed var(--line);
+  font-size: 0.82rem;
+}
+.lab .seq-gap.hit {
+  border-color: var(--ok);
+  color: var(--ok-ink, var(--ok));
+  background: var(--ok-soft, transparent);
+}
+
+/* ریاضی ۱ widgets (components/widgets/SetLabs.tsx, SeqLabs.tsx). */
+.set-line {
+  width: 100%;
+  height: auto;
+  direction: ltr;
+}
+.set-axis {
+  stroke: var(--ink-3, #8a84a8);
+  stroke-width: 1.5;
+}
+.set-tick {
+  font-size: 10px;
+  fill: var(--ink-2);
+  text-anchor: middle;
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+}
+.set-range {
+  stroke: var(--plot-main);
+  stroke-width: 6;
+  stroke-linecap: butt;
+}
+.set-arrow {
+  fill: none;
+  stroke: var(--plot-main);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.set-dot {
+  fill: var(--plot-main);
+  stroke: var(--plot-main);
+  stroke-width: 2.5;
+}
+.set-hole {
+  fill: var(--surface, #fff);
+  stroke: var(--plot-main);
+  stroke-width: 2.5;
+}
+.venn {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 8px auto;
+  direction: ltr;
+}
+.venn-u,
+.venn-r {
+  fill: transparent;
+  transition: fill 0.25s;
+}
+.venn-u.on,
+.venn-r.on {
+  fill: color-mix(in srgb, var(--plot-main) 32%, transparent);
+}
+.venn-edge {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 2;
+}
+.venn-name {
+  font-size: 16px;
+  font-weight: 800;
+  fill: var(--ink);
+  font-family: 'KaTeX_Math', serif;
+  font-style: italic;
+}
+.venn-name.small {
+  font-size: 14px;
+}
+.venn-el {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--ink-3, #8a84a8);
+  text-anchor: middle;
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+}
+.venn-el.on {
+  fill: var(--ink);
+}
+.pat-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 110px;
+  margin: 10px 0;
+  direction: ltr;
+}
+.pat-fig {
+  height: auto;
+  max-height: 120px;
+}
+.pat-stick {
+  stroke: var(--warn, #e8a33d);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+.pat-dot {
+  fill: var(--plot-main);
+}
+.grow-bars {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+  height: 150px;
+  margin: 10px 0 4px;
+}
+.grow-col {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+.grow-track {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--line);
+}
+.grow-bar {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  background: var(--plot-main);
+  transition: height 0.25s;
+}
+.grow-bar.neg {
+  background: var(--plot-alt);
+}
+.grow-val {
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.grow-n {
+  font-size: 0.8rem;
+}
+
+/* «آزمایشگاه احتمال» (screens/ProbLab.tsx): coins, dice and marbles, the sample space and the trials. */
+.lab .pl-face {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: var(--surface-2);
+}
+.lab .pl-face.hit {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+.lab .pl-coin,
+.lab .pl-die {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+.lab .pl-coin {
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d6dae3, #a9b0bf);
+  color: #2f3545;
+}
+.lab .pl-coin.up {
+  background: linear-gradient(145deg, #ffd66b, #e3a51c);
+  color: #5a3b00;
+}
+.lab .pl-die {
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1.5px solid var(--line-2);
+  color: var(--ink);
+}
+.lab .pl-marble {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-shadow: inset -3px -3px 6px rgba(0, 0, 0, 0.25);
+}
+.lab .pl-marble.red {
+  background: radial-gradient(circle at 35% 35%, #ff8a9f, #e0254d);
+}
+.lab .pl-marble.blue {
+  background: radial-gradient(circle at 35% 35%, #8fc1ff, #2468d8);
+}
+.lab .pl-bag {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 6px 10px;
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+.lab .pl-space {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+/* Two dice: the classic 6 × 6 table, first die down the side, second along the top. */
+.lab .pl-space.grid6 {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+}
+.lab .pl-space.grid6 .pl-face {
+  justify-content: center;
+  gap: 2px;
+  padding: 3px 0;
+}
+.lab .pl-space.grid6 .pl-die {
+  width: 18px;
+  height: 20px;
+  border: 0;
+  background: none;
+  font-size: 0.8rem;
+}
+.lab .pl-tex {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: left;
+}
+.lab .pl-yes {
+  color: var(--ok-ink);
+}
+.lab .lab-asks .chip[aria-pressed='true'] {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+/* «موازنهٔ واکنش» (screens/BalanceLab.tsx): coefficient steppers, the atom table with a scale per element. */
+.lab .chip.done {
+  background: var(--ok-soft);
+  color: var(--ok-ink);
+}
+.lab .bl-title {
+  font-size: 1.08rem;
+}
+.lab .bl-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  color: var(--ink-2);
+  line-height: 1.9;
+}
+.lab .bl-note > svg {
+  flex: none;
+  margin-top: 5px;
+  color: var(--accent-dark);
+}
+.lab .bl-eq {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px 4px;
+}
+.lab .bl-side {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 4px;
+}
+.lab .bl-sp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 50px;
+  padding: 6px 4px 4px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 1.5px solid transparent;
+}
+.lab .bl-sp.hinted {
+  border-color: var(--accent);
+}
+.lab .bl-step {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line-2);
+  background: var(--surface);
+  color: var(--primary);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.lab .bl-step:active:not(:disabled) {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+}
+.lab .bl-step:disabled {
+  color: var(--ink-3);
+  opacity: 0.45;
+}
+.lab .bl-coef {
+  min-width: 34px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--ink);
+}
+/* Side room so KaTeX's subscript struts (about 9px past the glyphs) never count as overflow. */
+.lab .bl-f {
+  font-size: 1.04rem;
+  white-space: nowrap;
+  padding: 2px 6px 0;
+}
+.lab .bl-plus,
+.lab .bl-arrow {
+  padding-bottom: 12px;
+  font-weight: 800;
+  color: var(--ink-2);
+}
+.lab .bl-arrow {
+  font-size: 1.35rem;
+  padding-inline: 2px;
+  padding-bottom: 8px;
+}
+.lab .bl-tools {
+  justify-content: center;
+  gap: 8px;
+}
+.lab .bl-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lab .bl-tr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 14px;
+  border: 1.5px solid transparent;
+  background: var(--surface-2);
+  transition: background 0.25s, border-color 0.25s;
+}
+.lab .bl-tr.eq {
+  background: var(--ok-soft);
+  border-color: color-mix(in srgb, var(--ok) 50%, transparent);
+}
+.lab .bl-tr.neq {
+  background: var(--bad-soft);
+}
+.lab .bl-tr.bl-th {
+  background: none;
+  padding-block: 0;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--ink-3);
+  text-align: center;
+}
+.lab .bl-cnt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  line-height: 1.35;
+}
+.lab .bl-cnt b {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+.lab .bl-tr.eq .bl-cnt b {
+  color: var(--ok-ink);
+}
+.lab .bl-tr.neq .bl-cnt b {
+  color: var(--bad-ink);
+}
+.lab .bl-cnt small {
+  max-width: 100%;
+  font-size: 0.74rem;
+  color: var(--ink-2);
+}
+.lab .bl-mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lab .bl-beam {
+  width: 60px;
+  height: 28px;
+  overflow: visible;
+}
+.lab .bl-fulcrum {
+  fill: var(--ink-3);
+}
+.lab .bl-bar {
+  fill: var(--bad);
+}
+.lab .bl-pan {
+  fill: var(--ink-2);
+}
+.lab .bl-tr.eq .bl-bar {
+  fill: var(--ok);
+}
+.lab .bl-el {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.lab .bl-el .tiny {
+  color: var(--ink-2);
+  font-weight: 700;
+}
+.lab .lab-verdict {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  line-height: 2;
+}
+.lab .lab-verdict b {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.lab .lab-verdict.ok {
+  background: var(--ok-soft);
+  color: var(--ok-ink);
+}
+.lab .lab-verdict.notSimplest {
+  background: var(--warn-soft);
+  color: var(--ink);
+}
+.lab .lab-verdict.unbalanced {
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.lab .lab-verdict .math-display {
+  color: var(--ink);
+}
+.lab .bl-hints {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lab .bl-hints li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  line-height: 2;
+  font-size: 0.92rem;
+}
+.lab .bl-hints li > svg {
+  flex: none;
+  margin-top: 6px;
+  color: var(--accent-dark);
+}
+
+/* «رقم‌های بامعنا» (components/widgets/SigFigLab.tsx) in the units lab: digit tiles, terms, rules. */
+.lab .sf-num {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 6px;
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+.lab .sf-d {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 46px;
+  border-radius: 10px;
+  border: 2px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1.45rem;
+  font-weight: 800;
+  transition: background 0.15s, opacity 0.15s;
+}
+.lab .sf-num.calc .sf-d {
+  width: 30px;
+  height: 42px;
+  font-size: 1.3rem;
+}
+.lab .sf-d[aria-pressed='true'] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+.lab .sf-d.drop {
+  opacity: 0.35;
+}
+.lab .sf-d.hit {
+  background: var(--ok-soft);
+  border-color: var(--ok);
+  color: var(--ok-ink);
+}
+.lab .sf-d.miss {
+  background: var(--surface);
+  border-style: dashed;
+  border-color: var(--ok);
+  color: var(--ok-ink);
+}
+.lab .sf-d.bad {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+  color: var(--bad-ink);
+}
+.lab .sf-d.skip {
+  color: var(--ink-3);
+  border-color: var(--line);
+}
+.lab .sf-point {
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1;
+  padding-bottom: 6px;
+  color: var(--ink);
+}
+.lab .sf-exp,
+.lab .sf-unit {
+  font-size: 1.15rem;
+  padding-bottom: 8px;
+  padding-inline-start: 4px;
+}
+.lab .sf-terms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.lab .sf-term {
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 2px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1.1rem;
+}
+.lab .sf-term[aria-pressed='true'] {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.lab .sf-term.hit {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+.lab .sf-term.bad {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+}
+.lab .sf-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  line-height: 2;
+  color: var(--ink-2);
+}
+.lab .sf-tag {
+  display: inline-block;
+  margin-inline-end: 6px;
+  padding: 0 8px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  line-height: 1.8;
+  background: var(--surface-3);
+  color: var(--ink-2);
+}
+.lab .sf-tag.yes {
+  background: var(--ok-soft);
+  color: var(--ok-ink);
+}
+.lab .sf-tag.no {
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.lab .sf-all summary {
+  cursor: pointer;
+  color: var(--primary);
+  padding: 4px 0;
+}
+.lab .sf-all[open] summary {
+  margin-bottom: 8px;
+}

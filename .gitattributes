@@ -1,0 +1,5 @@
+# Keep LF line endings on every checkout (Windows too): public/_headers and its test expect them.
+* text=auto eol=lf
+*.png binary
+*.woff2 binary
+*.apk binary

@@ -1,0 +1,167 @@
+/* «کتابخانهٔ بیومانا»: all textbooks by grade and major */
+.library {
+  margin-top: 28px;
+}
+.lib-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.lib-weekly {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 800;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+.lib-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.lib-filters .seg {
+  flex: 1 1 200px;
+}
+.lib-shelf {
+  margin: 16px 0 8px;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+.lib-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
+  gap: 10px;
+}
+.lib-book {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 84px;
+  padding: 12px 14px 12px 12px;
+  padding-inline-start: 20px;
+  border-radius: 16px;
+  border: 1.5px dashed var(--line-2);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--ink-2);
+  text-decoration: none;
+  text-align: start;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.lib-book:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.lib-book b {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.lib-book small {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: var(--ink-3);
+  font-size: 0.78rem;
+}
+.lib-spine {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 7px;
+  background: var(--line-2);
+}
+.lib-book.ready {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--ok) 45%, var(--line));
+  background: color-mix(in srgb, var(--ok-soft) 70%, var(--surface));
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+.lib-book.ready .lib-spine {
+  background: var(--ok);
+}
+.lib-book.ready small {
+  color: var(--ok-ink);
+}
+
+/* guest offer to save progress with Google (home) */
+.save-nudge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  border: 1.5px solid color-mix(in srgb, var(--info) 35%, var(--line));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--info-soft) 80%, var(--surface)), var(--surface));
+}
+.save-nudge-g {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+}
+.save-nudge-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+@media (max-width: 480px) {
+  .save-nudge {
+    flex-wrap: wrap;
+  }
+  .save-nudge-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* a book with lessons: the card opens it, and a small button opens its «برگهٔ خلاصه» */
+.lib-book.ready {
+  padding: 0;
+}
+.lib-open {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  width: 100%;
+  min-height: 84px;
+  padding: 12px 14px 12px 12px;
+  padding-inline-start: 20px;
+  text-align: start;
+  color: inherit;
+}
+.lib-sheet {
+  align-self: flex-end;
+  margin: -6px 10px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ok) 35%, var(--line));
+  background: var(--surface);
+  color: var(--ok-ink);
+  font-weight: 800;
+  font-size: 0.74rem;
+  line-height: 1.8;
+}
+.lib-sheet:hover {
+  border-color: var(--ok);
+}

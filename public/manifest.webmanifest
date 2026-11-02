@@ -1,0 +1,19 @@
+{
+  "name": "بیومانا — درس‌ها را واقعاً بفهم",
+  "short_name": "بیومانا",
+  "description": "یادگیری بازی‌وار همهٔ درس‌های دبیرستان (دهم تا دوازدهم، ریاضی، تجربی و انسانی)؛ هر مفهوم آن‌قدر از راه‌های مختلف توضیح داده می‌شود تا بفهمی.",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "/#/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f3ec",
+  "theme_color": "#0f8a83",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,285 @@
+/* «واژه‌نامه»: tappable terms and formula symbols, and the card that explains them */
+mark.term.tap {
+  cursor: help;
+  text-decoration: underline dotted color-mix(in srgb, var(--primary) 70%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  transition: background 0.15s;
+}
+mark.term.tap:hover,
+mark.term.tap:focus-visible {
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
+  outline: none;
+}
+.mi.sym {
+  cursor: help;
+  border-radius: 6px;
+  background-image: linear-gradient(90deg, color-mix(in srgb, var(--primary) 60%, transparent) 50%, transparent 0);
+  background-size: 6px 2px;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  padding-bottom: 3px;
+  transition: background-color 0.15s;
+}
+.mi.sym:hover,
+.mi.sym:focus-visible {
+  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+  outline: none;
+}
+.math-display.sym {
+  position: relative;
+  cursor: help;
+  border-radius: 14px;
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+.math-display.sym:hover,
+.math-display.sym:focus-visible {
+  background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--primary) 30%, transparent);
+  outline: none;
+}
+.sym-badge {
+  position: absolute;
+  top: 4px;
+  inset-inline-end: 6px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 1;
+  animation: sym-pulse 2.6s ease-in-out infinite;
+}
+@keyframes sym-pulse {
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--primary) 0%, transparent), 0 0 0 0 transparent;
+    transform: scale(1.08);
+  }
+}
+
+.gl-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(20, 12, 60, 0.12);
+}
+.gl-card {
+  position: fixed;
+  z-index: 91;
+  width: min(360px, calc(100vw - 24px));
+  max-height: min(70vh, 520px);
+  overflow: auto;
+  padding: 14px 16px 12px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1.5px solid color-mix(in srgb, var(--primary) 28%, var(--line));
+  box-shadow: 0 24px 60px -20px rgba(16, 41, 47, 0.45), 0 4px 0 color-mix(in srgb, var(--primary) 18%, var(--line));
+  color: var(--ink);
+  transform-origin: var(--ax, 50%) 100%;
+}
+.gl-card.below {
+  transform-origin: var(--ax, 50%) 0;
+}
+.gl-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.gl-head b {
+  flex: 1;
+  font-size: 1.02rem;
+}
+.gl-ico {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  flex: none;
+}
+.gl-x {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--ink-3);
+}
+.gl-x:hover {
+  background: var(--surface-2);
+}
+.gl-list {
+  display: grid;
+  gap: 8px;
+}
+.gl-item {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.gl-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.gl-sym {
+  flex: none;
+  min-width: 46px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  text-align: center;
+  font-size: 1.1rem;
+}
+.gl-title {
+  display: block;
+  margin-bottom: 2px;
+}
+.gl-short {
+  color: var(--ink-2);
+  line-height: 1.85;
+  font-size: 0.94rem;
+}
+.gl-more {
+  overflow: hidden;
+}
+.gl-long {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line-2);
+  line-height: 1.95;
+  font-size: 0.93rem;
+}
+.gl-ex {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+.gl-ex span {
+  font-weight: 900;
+  font-size: 0.8rem;
+  color: var(--accent-dark);
+}
+.gl-ex ul {
+  margin: 4px 0 0;
+  padding-inline-start: 18px;
+  line-height: 1.9;
+  font-size: 0.9rem;
+}
+.gl-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-weight: 800;
+  font-size: 0.84rem;
+  color: var(--primary);
+}
+
+/* «پیش از شروع»: the context screen before a concept's first explanation */
+.intro-card {
+  position: relative;
+  margin-top: 6px;
+  padding: 18px;
+  border-radius: 24px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--u, var(--primary)) 14%, var(--surface)), var(--surface) 60%);
+  border: 1.5px solid color-mix(in srgb, var(--u, var(--primary)) 30%, var(--line));
+  box-shadow: var(--shadow);
+  animation: rise 0.35s ease-out;
+}
+.intro-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 900;
+  font-size: 0.82rem;
+}
+.intro-talk {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+}
+.intro-talk .speech {
+  flex: 1;
+  line-height: 2;
+  font-weight: 600;
+}
+.intro-goal {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--surface-2);
+  border: 1px dashed var(--line-2);
+  line-height: 1.9;
+}
+.intro-goal .ic-wrap {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.intro-terms {
+  margin-top: 14px;
+}
+.intro-terms > span {
+  display: block;
+  font-weight: 800;
+  font-size: 0.86rem;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.intro-terms .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.intro-terms button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1.5px solid color-mix(in srgb, var(--primary) 30%, var(--line));
+  font-weight: 800;
+  color: var(--primary);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--primary) 18%, var(--line));
+}
+.intro-terms button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+.tap-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 0.84rem;
+  color: var(--ink-3);
+  font-weight: 700;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sym-badge {
+    animation: none;
+  }
+}

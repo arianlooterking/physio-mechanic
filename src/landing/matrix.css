@@ -1,0 +1,134 @@
+/* landing: the grade × major overview of the library, and the weekly note */
+.fl-hero-weekly {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 181, 30, 0.14);
+  border: 1px solid rgba(255, 181, 30, 0.35);
+  color: #ffd36b;
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+.fl-matrix {
+  margin-top: 26px;
+  padding: 20px;
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.fl-matrix-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.fl-matrix-head b {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+}
+.fl-weekly {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+.fl-matrix-grid {
+  display: grid;
+  gap: 8px;
+}
+.fl-mrow {
+  display: grid;
+  grid-template-columns: minmax(96px, 1.3fr) repeat(3, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+.fl-mrow > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 6px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+.fl-mrow > span b {
+  font-size: 1.3rem;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.fl-mrow > span small {
+  color: var(--ok-ink);
+  background: var(--ok-soft);
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+}
+.fl-mrow > span[role='rowheader'] {
+  background: transparent;
+  align-items: flex-start;
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+.fl-mrow.head > span {
+  background: transparent;
+  padding: 2px;
+  color: var(--ink-3);
+  font-weight: 800;
+}
+.fl-mrow > span.has {
+  background: color-mix(in srgb, var(--ok-soft) 70%, var(--surface));
+  border: 1.5px solid color-mix(in srgb, var(--ok) 40%, transparent);
+}
+.fl-matrix-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  color: var(--ink-3);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+@media (min-width: 760px) {
+  .fl-numbers-in {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (max-width: 759px) {
+  .fl-numbers-in {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .fl-numbers-in > div:last-child {
+    grid-column: auto;
+  }
+}
+
+/* phones: keep the floating formulas away from the hero text */
+@media (max-width: 979px) {
+  .fl-formula.mid {
+    display: none;
+  }
+  .fl-formula {
+    opacity: 0.7;
+  }
+}
