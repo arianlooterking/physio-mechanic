@@ -56,6 +56,9 @@ export const testById = (id: string) => testMap.get(id);
 export const cardById = (id: string) => cardMap.get(id);
 export const allCards = (): Flashcard[] => LESSONS.flatMap((l) => l.cards);
 
+/** How lessons cite the reference book: printed page numbers of the 4th edition, shown as plain text (the book is not linked). */
+export const BOOK_REF = 'کتاب نوردین و فرانکل، ویرایش چهارم';
+
 export function lessonBookLink(lesson: Lesson) {
   const b = bookOf(subjectById(lesson.subject).book);
   return (page: number) => pdfLink(b, page);

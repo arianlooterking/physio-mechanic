@@ -1,4 +1,4 @@
-import { lessonById, lessonBookLink, subjectById } from '../content';
+import { BOOK_REF, lessonById, subjectById } from '../content';
 import { WARMUPS } from '../content/warmups';
 import { KonkurTips } from '../components/KonkurTips';
 import { Icon } from '../components/Icon';
@@ -28,7 +28,6 @@ export function LessonOverview({ lessonId }: { lessonId: string }) {
     );
   }
   const subj = subjectById(lesson.subject);
-  const link = lessonBookLink(lesson);
   const lp = s.lessons[lesson.id];
   const practiceNodes = buildPath(lesson).filter((n) => n.kind === 'practice');
   const finalNode = buildPath(lesson).find((n) => n.kind === 'final');
@@ -59,13 +58,12 @@ export function LessonOverview({ lessonId }: { lessonId: string }) {
         <b style={{ fontSize: '1.4rem' }}>{pct(m)}</b>
       </div>
       {lesson.pages[0] > 0 && (
-        <a className="book-ref" href={link(lesson.pages[0])} target="_blank" rel="noopener noreferrer">
+        <div className="book-ref">
           <Icon name="book" size={20} />
           <span className="grow">
-            کتاب درسی {subj.title}، صفحهٔ {fmt(lesson.pages[0])} تا {fmt(lesson.pages[1])}
+            {BOOK_REF}، صفحهٔ {fmt(lesson.pages[0])} تا {fmt(lesson.pages[1])}
           </span>
-          <Icon name="external" size={16} />
-        </a>
+        </div>
       )}
 
       <button className="card row" style={{ textAlign: 'start' }} onClick={() => go({ name: 'sheet', subject: lesson.subject, lessonId: lesson.id })}>

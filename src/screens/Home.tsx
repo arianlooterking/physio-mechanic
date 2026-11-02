@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const NUDGE_KEY = 'biomana:nudge-hidden';
-import { GRADES, lessonBookLink, MAJOR_INFO, SUBJECTS, subjectById, subjectsForMajor } from '../content';
+import { BOOK_REF, GRADES, MAJOR_INFO, SUBJECTS, subjectById, subjectsForMajor } from '../content';
 import type { Lesson, SubjectId } from '../content/types';
 import { Icon, type IconName } from '../components/Icon';
 import { Mascot } from '../components/Mascot';
@@ -194,9 +194,9 @@ function Unit({ lesson, guide }: { lesson: Lesson; guide: boolean }) {
         <h2>{lesson.title}</h2>
         <div className="row wrap">
           {lesson.pages[0] > 0 && (
-            <a className="uh-btn" href={lessonBookLink(lesson)(lesson.pages[0])} target="_blank" rel="noopener noreferrer">
+            <span className="uh-btn" title={BOOK_REF}>
               <Icon name="book" size={16} /> کتاب: صفحهٔ {fmt(lesson.pages[0])} تا {fmt(lesson.pages[1])}
-            </a>
+            </span>
           )}
           <button className="uh-btn" onClick={() => go({ name: 'lesson', lessonId: lesson.id })}>
             <Icon name="grid" size={16} /> جزئیات درس

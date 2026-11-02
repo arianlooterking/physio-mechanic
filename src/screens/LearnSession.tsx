@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { conceptById, lessonBookLink, subjectById, subjectColor } from '../content';
+import { BOOK_REF, conceptById, lessonBookLink, subjectById, subjectColor } from '../content';
+import { fmt } from '../lib/digits';
 import { findTerm } from '../content/glossary';
 import { INTROS, introTerms } from '../content/intros';
 import { WARMUPS } from '../content/warmups';
@@ -470,11 +471,12 @@ function Learn({ conceptId }: { conceptId: string }) {
               </button>
             </div>
             {(concept.pages?.[0] ?? lesson.pages[0]) > 0 && (
-            <a className="book-ref" href={bookLink(concept.pages?.[0] ?? lesson.pages[0])} target="_blank" rel="noopener noreferrer">
+            <div className="book-ref">
               <Icon name="book" size={20} />
-              <span className="grow">متن کتاب درسی را هم ببین (صفحهٔ {concept.pages?.[0] ?? lesson.pages[0]})</span>
-              <Icon name="external" size={16} />
-            </a>
+              <span className="grow">
+                برای خواندن بیشتر: {BOOK_REF}، صفحهٔ {fmt((concept.pages ?? lesson.pages)[0])} تا {fmt((concept.pages ?? lesson.pages)[1])}
+              </span>
+            </div>
             )}
             <p className="small muted center">اگر باز هم سؤال داشتی، از استادت بپرس؛ همین سؤال‌ها نشان می‌دهد داری عمیق یاد می‌گیری.</p>
             <button className="link-btn" style={{ alignSelf: 'center' }} onClick={leave}>

@@ -17,7 +17,7 @@ const faVersion = (v: string) => v.replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[
  */
 export async function shareApp() {
   const url = STORES[nativeStore.getState().channel]?.url ?? SITE;
-  const p = { title: 'بیومانا', text: 'بیومانا: درس‌های دبیرستان را قدم‌به‌قدم و بازی‌وار بفهم، با توضیح چندباره تا وقتی واقعاً جا بیفتد.', url };
+  const p = { title: 'بیومانا', text: 'بیومانا: بیومکانیک دستگاه اسکلتی‌ـ‌عضلانی را قدم‌به‌قدم بفهم، با توضیح چندباره تا وقتی واقعاً جا بیفتد.', url };
   try {
     if (native.share) await native.share(p);
     else if (navigator.share) await navigator.share(p);

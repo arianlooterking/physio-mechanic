@@ -544,7 +544,7 @@ function Loop() {
 
 /** The four parts of the book: what each covers and whether its lessons are ready. */
 const PARTS: { id: string; title: string; icon: IconName; color: string; chapters: string[] }[] = [
-  { id: 'bm1', title: 'مقدمه و مفاهیم پایه', icon: 'lever', color: 'phys', chapters: ['صفحه‌ها و محورها', 'نیرو و گشتاور', 'اهرم‌ها و تعادل', 'تنش و کرنش', 'ویسکوالاستیسیته'] },
+  { id: 'bm1', title: 'مقدمه و مفاهیم پایه', icon: 'lever', color: 'phys', chapters: ['نیرو و گشتاور', 'نمودار جسم آزاد و تعادل', 'تنش و کرنش', 'ویسکوالاستیسیته', 'خستگی'] },
   { id: 'bm2', title: 'بیومکانیک بافت‌ها', icon: 'bone', color: 'bio', chapters: ['استخوان', 'غضروف مفصلی', 'تاندون و لیگامان', 'اعصاب محیطی', 'عضلهٔ اسکلتی'] },
   { id: 'bm3', title: 'بیومکانیک مفصل‌ها', icon: 'joint', color: 'math', chapters: ['زانو', 'ران', 'مچ و کف پا', 'ستون فقرات کمری و گردنی', 'شانه', 'آرنج', 'مچ و دست'] },
   { id: 'bm4', title: 'بیومکانیک کاربردی', icon: 'muscle', color: 'chem', chapters: ['تثبیت شکستگی', 'آرتروپلاستی', 'راه رفتن'] },
