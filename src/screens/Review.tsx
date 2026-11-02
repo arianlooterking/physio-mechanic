@@ -87,7 +87,7 @@ export function Review() {
           <div className="small muted">
             {lastExam
               ? `آخرین بار: ${fmt(lastExam.score, 1)}٪ در ${fmt(lastExam.total)} سؤال ${subjectById(lastExam.subject)?.title ?? ''}`
-              : '۱۰، ۲۰ یا ۳۰ تست از چند درس یک کتاب، با زمان کنکوری'}
+              : '۱۰، ۲۰ یا ۳۰ سؤال از چند درس، زمان‌دار مثل امتحان'}
           </div>
         </div>
         <button className="btn sm" onClick={() => go({ name: 'mock' })}>

@@ -662,7 +662,7 @@ function ScoreRing() {
       </svg>
       <div className="fl-score-in">
         <b>{seen ? <CountUp to={78} /> : '۰'}٪</b>
-        <small>تراز کنکوری</small>
+        <small>نمرهٔ آزمون</small>
       </div>
     </div>
   );
@@ -788,8 +788,8 @@ function Features() {
               <span className="fl-tile-ico">
                 <Icon name="trophy" size={22} />
               </span>
-              <h3>آزمون کنکوری</h3>
-              <p>زمان‌دار، با نمرهٔ منفی و پاسخ تشریحی برای هر تست.</p>
+              <h3>آزمون زمان‌دار</h3>
+              <p>مثل امتحان دانشکده: زمان‌دار، با پاسخ تشریحی برای هر سؤال.</p>
             </div>
             <ScoreRing />
           </motion.article>

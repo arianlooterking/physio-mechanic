@@ -15,7 +15,6 @@ import { Bar, Ring, Sheet } from './ui';
 const TABS: { name: Route['name']; label: string; icon: IconName }[] = [
   { name: 'home', label: 'یادگیری', icon: 'home' },
   { name: 'review', label: 'مرور', icon: 'review' },
-  { name: 'lab', label: 'آزمایشگاه', icon: 'wand' },
   { name: 'progress', label: 'پیشرفت', icon: 'chart' },
   { name: 'profile', label: 'من', icon: 'user' },
 ];

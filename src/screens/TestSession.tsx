@@ -131,13 +131,13 @@ function Exam({ lessonId, set }: { lessonId: string; set?: 'konkur' }) {
             </h1>
             <div className="card stack" style={{ width: '100%', textAlign: 'start' }}>
               <div className="row">
-                <Icon name="grid" /> {fmt(qs.length)} {konkur ? 'تست در سطح کنکور ارشد، با پاسخی که دو بار جداگانه حل و بررسی شده' : 'سؤال چهارگزینه‌ای به سبک کنکور'}
+                <Icon name="grid" /> {fmt(qs.length)} {konkur ? 'تست در سطح کنکور ارشد، با پاسخی که دو بار جداگانه حل و بررسی شده' : 'سؤال چهارگزینه‌ای'}
               </div>
               <div className="row">
                 <Icon name="clock" /> زمان: {fmt(Math.round(limit / 60))} دقیقه
               </div>
               <div className="row">
-                <Icon name="info" /> نمره‌دهی کنکوری: هر ۳ جواب غلط، یک جواب درست را خنثی می‌کند. اگر مطمئن نیستی، نزدن بهتر است.
+                <Icon name="info" /> نمرهٔ منفی: هر ۳ جواب غلط، یک جواب درست را خنثی می‌کند. اگر مطمئن نیستی، نزدن بهتر است.
               </div>
               <div className="row">
                 <Icon name="flag" /> می‌توانی سؤال را علامت بزنی و بعداً برگردی.

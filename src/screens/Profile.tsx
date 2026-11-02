@@ -29,7 +29,7 @@ export const GOALS = [
   { xp: 15, label: 'آرام', sub: 'حدود ۵ دقیقه در روز' },
   { xp: 30, label: 'منظم', sub: 'حدود ۱۰ دقیقه در روز' },
   { xp: 60, label: 'جدی', sub: 'حدود ۲۰ دقیقه در روز' },
-  { xp: 100, label: 'کنکوری', sub: 'حدود ۳۰ دقیقه در روز' },
+  { xp: 100, label: 'جدی', sub: 'حدود ۳۰ دقیقه در روز' },
 ];
 
 const RESTORE_PROBLEM: Record<BackupProblem | 'big' | 'read', string> = {

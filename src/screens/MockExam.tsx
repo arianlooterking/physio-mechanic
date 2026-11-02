@@ -117,7 +117,7 @@ function Setup({ from, onStart, onClose }: { from?: Lesson; onStart: (e: ExamSet
           <Mascot mood="think" size={84} />
           <div>
             <h1>آزمون جامع</h1>
-            <p className="small muted">تست‌های درس‌هایی که انتخاب می‌کنی، قاطی و بدون تکرار؛ مثل سر جلسهٔ کنکور.</p>
+            <p className="small muted">تست‌های درس‌هایی که انتخاب می‌کنی، قاطی و بدون تکرار؛ مثل سر جلسهٔ امتحان.</p>
           </div>
         </div>
 
@@ -228,14 +228,14 @@ function Setup({ from, onStart, onClose }: { from?: Lesson; onStart: (e: ExamSet
         </h2>
         <div className="card setting mx-timer">
           <div className="s-txt">
-            <b>زمان‌دار، با سرعت کنکور</b>
+            <b>زمان‌دار، مثل جلسهٔ امتحان</b>
             <span>{timed ? `${fmt(Math.round((Math.max(count, 1) * EXAM_SEC_PER_Q) / 60))} دقیقه؛ حدود یک دقیقه برای هر سؤال` : 'بدون ساعت؛ با خیال راحت فکر کن'}</span>
           </div>
           <button className="switch" role="switch" aria-checked={timed} aria-label="زمان‌دار" onClick={() => setTimed((t) => !t)} />
         </div>
         <div className="note info mx-rules">
           <Icon name="info" className="n-ic" size={20} />
-          <div>نمره‌دهی کنکوری است: هر ۳ جواب غلط یک جواب درست را خنثی می‌کند، پس اگر مطمئن نیستی نزن. تا وقتی آزمون را تحویل نداده‌ای، هر جوابی را می‌توانی عوض یا پاک کنی.</div>
+          <div>نمره‌دهی با نمرهٔ منفی است: هر ۳ جواب غلط یک جواب درست را خنثی می‌کند، پس اگر مطمئن نیستی نزن. تا وقتی آزمون را تحویل نداده‌ای، هر جوابی را می‌توانی عوض یا پاک کنی.</div>
         </div>
       </div>
       <div className="session-foot">
